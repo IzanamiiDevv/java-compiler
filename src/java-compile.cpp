@@ -19,7 +19,7 @@ int run_action(const std::string cmd);
 const std::map<std::string, uint8_t> action = create_action();
 
 int main(int argc, char* argv[]) {
-    if(!Java::isJava(argv[1])) return run_action(argv[1]);
+    if(!Java::isJava(argv[1])) return run_action(std::string(argv[1]));
     
     std::string jvfile = std::string(argv[1]);
     Java::tokenize(jvfile);
@@ -56,13 +56,13 @@ int run_action(const std::string cmd) {
     try {
         switch (action.at(cmd)) {
         case 0:
-            std::cout << "Test 1" << std::endl;
+            std::cout << "Java Compiler Tool: v1.0.0" << std::endl;
             break;
         case 1:
-            std::cout << "Test 2" << std::endl;
+            std::cout << "Created by " << CREDITS << std::endl;
             break;
         case 2:
-            std::cout << "Test 3" << std::endl;
+            std::cout << "Provides basic compilation on your Java Program!" << std::endl;
             break;
         }
     } catch(const std::exception& e) {
